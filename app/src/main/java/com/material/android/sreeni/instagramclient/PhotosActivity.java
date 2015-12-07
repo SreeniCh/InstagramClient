@@ -50,7 +50,7 @@ public class PhotosActivity extends AppCompatActivity {
                 // Your code to refresh the list here.
                 // Make sure you call swipeContainer.setRefreshing(false)
                 // once the network request has completed successfully.
-                fetchPopularPhotos();
+                fetchTimelineAsync(0);
             }
         });
         // Configure the refreshing colors
@@ -101,6 +101,7 @@ public class PhotosActivity extends AppCompatActivity {
                         photo.imageUrl = photoJSON.getJSONObject("images").getJSONObject("standard_resolution").getString("url");
                         photo.imageHeight = photoJSON.getJSONObject("images").getJSONObject("standard_resolution").getInt("height");
                         photo.likesCount = photoJSON.getJSONObject("likes").getInt("count");
+                        photo.profilePicUrl = photoJSON.getJSONObject("user").getString("profile_picture");
                         photos.add(photo);
 
                         Log.i(TAG, "Username: " + photoJSON.getJSONObject("user").getString("username"));

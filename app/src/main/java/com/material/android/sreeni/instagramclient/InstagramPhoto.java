@@ -5,6 +5,7 @@ package com.material.android.sreeni.instagramclient;
  */
 public class InstagramPhoto {
     public String username;
+    public String profilePicUrl;
     public String caption;
     public String type;
     public String imageUrl;

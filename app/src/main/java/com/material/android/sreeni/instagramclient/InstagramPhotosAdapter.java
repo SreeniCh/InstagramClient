@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.makeramen.roundedimageview.RoundedTransformationBuilder;
+import com.squareup.picasso.Transformation;
+import android.graphics.Color;
 
 import com.squareup.picasso.Picasso;
 
@@ -44,14 +47,32 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
         ImageView ivPhoto = (ImageView) convertView.findViewById(R.id.ivPhoto);
         TextView tvAuthor = (TextView) convertView.findViewById(R.id.tvAuthor);
         TextView tvLikes = (TextView) convertView.findViewById(R.id.tvLikes);
+        ImageView ivProfilePic = (ImageView) convertView.findViewById(R.id.ivProfilePic);
         // Insert the model data into each of the view items
         tvCaption.setText(photo.caption);
-        tvAuthor.setText("Author: " + photo.username);
+        tvAuthor.setText(photo.username);
         tvLikes.setText("Likes: " + photo.likesCount);
         // Clear the image view
         //ivPhoto.setImageResource(0);
         // Insert the image using picasso
         Picasso.with(getContext()).load(photo.imageUrl).into(ivPhoto);
+
+        //Profile pic
+        Transformation transformation = new RoundedTransformationBuilder()
+                .borderColor(Color.GRAY)
+                .borderWidthDp(1)
+                .cornerRadiusDp(120)
+                .oval(false)
+                .build();
+
+        Picasso.with(getContext())
+                .load(photo.profilePicUrl)
+                .fit()
+                .centerInside()
+                .transform(transformation)
+                .into(ivProfilePic);
+
+        //Picasso.with(getContext()).load(photo.profilePicUrl).fit().centerInside().into(ivProfilePic);
 
         // Return the created item as a view
         return convertView;
