@@ -103,6 +103,14 @@ public class PhotosActivity extends AppCompatActivity {
                             Log.i(TAG, "null caption");
                             photo.caption = null;
                         }
+
+                        if (photoJSON.optJSONObject("comments") != null) {
+                            photo.commentsCount = photoJSON.getJSONObject("comments").getInt("count");
+                        } else {
+                            Log.i(TAG, "null caption");
+                            photo.commentsCount = 0;
+                        }
+                        Log.i(TAG, "comments: " + photo.commentsCount);
                         // Type: { "data" => [x] => "type" } ("image" or "video")
                         photo.type = photoJSON.getString("type");
                         // URL: { "data" => [x] => "images" => "standard_resoulution" => "url" }

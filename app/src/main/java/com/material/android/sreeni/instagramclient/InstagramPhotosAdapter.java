@@ -13,6 +13,8 @@ import android.graphics.Color;
 
 import com.squareup.picasso.Picasso;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,11 +50,18 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
         TextView tvAuthor = (TextView) convertView.findViewById(R.id.tvAuthor);
         TextView tvLikes = (TextView) convertView.findViewById(R.id.tvLikes);
         ImageView ivProfilePic = (ImageView) convertView.findViewById(R.id.ivProfilePic);
+        TextView tvCommentsCount = (TextView) convertView.findViewById(R.id.tvCommentsCount);
         // Insert the model data into each of the view items
         if (photo.caption == null) {
             tvCaption.setVisibility(View.INVISIBLE);
         } else {
             tvCaption.setText(photo.caption);
+        }
+
+        if (photo.commentsCount == 0) {
+            tvCommentsCount.setVisibility(View.INVISIBLE);
+        } else {
+            tvCommentsCount.setText("view all " + photo.commentsCount + " comments");
         }
         tvAuthor.setText(photo.username);
         tvLikes.setText(photo.likesCount + " likes");
