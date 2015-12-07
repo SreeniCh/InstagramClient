@@ -41,7 +41,7 @@ public class PhotosActivity extends AppCompatActivity {
         // send n/w request for photos
         fetchPopularPhotos();
 
-        /*
+        // Initialize SwipeRefreshLayout
         swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
         // Setup refresh listener which triggers new data loading
         swipeContainer.setOnRefreshListener(new OnRefreshListener() {
@@ -50,7 +50,8 @@ public class PhotosActivity extends AppCompatActivity {
                 // Your code to refresh the list here.
                 // Make sure you call swipeContainer.setRefreshing(false)
                 // once the network request has completed successfully.
-                fetchTimelineAsync(0);
+                fetchPopularPhotos();
+                swipeContainer.setRefreshing(false);
             }
         });
         // Configure the refreshing colors
@@ -58,8 +59,6 @@ public class PhotosActivity extends AppCompatActivity {
                 android.R.color.holo_green_light,
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
-        */
-
     }
 
 

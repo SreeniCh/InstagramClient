@@ -61,7 +61,7 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
         Transformation transformation = new RoundedTransformationBuilder()
                 .borderColor(Color.GRAY)
                 .borderWidthDp(1)
-                .cornerRadiusDp(120)
+                .cornerRadiusDp(30)
                 .oval(false)
                 .build();
 
