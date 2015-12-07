@@ -93,7 +93,16 @@ public class PhotosActivity extends AppCompatActivity {
                         // Author Name: { "data" => [x] => "user" => "username" }
                         photo.username = photoJSON.getJSONObject("user").getString("username");
                         // Caption: { "data" => [x] => "caption" => "text" }
-                        photo.caption = photoJSON.getJSONObject("caption").getString("text").toString();
+
+                        Log.i(TAG, "Caption object: " + photoJSON.optJSONObject("caption"));
+                        Log.i(TAG, "Caption - " + photoJSON.toString());
+                        // Dereference the caption only if it exists
+                        if (photoJSON.optJSONObject("caption") != null) {
+                            photo.caption = photoJSON.getJSONObject("caption").getString("text");
+                        } else {
+                            Log.i(TAG, "null caption");
+                            photo.caption = null;
+                        }
                         // Type: { "data" => [x] => "type" } ("image" or "video")
                         photo.type = photoJSON.getString("type");
                         // URL: { "data" => [x] => "images" => "standard_resoulution" => "url" }

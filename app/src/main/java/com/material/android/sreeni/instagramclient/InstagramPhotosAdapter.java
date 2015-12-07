@@ -49,7 +49,11 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
         TextView tvLikes = (TextView) convertView.findViewById(R.id.tvLikes);
         ImageView ivProfilePic = (ImageView) convertView.findViewById(R.id.ivProfilePic);
         // Insert the model data into each of the view items
-        tvCaption.setText(photo.caption);
+        if (photo.caption == null) {
+            tvCaption.setVisibility(View.INVISIBLE);
+        } else {
+            tvCaption.setText(photo.caption);
+        }
         tvAuthor.setText(photo.username);
         tvLikes.setText(photo.likesCount + " likes");
         // Clear the image view
