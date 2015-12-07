@@ -45,12 +45,19 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
         }
 
         // Look up the view for populating the data
-        TextView tvCaption = (TextView) convertView.findViewById(R.id.tvCaption);
+        //Photo, author and profile pic
         ImageView ivPhoto = (ImageView) convertView.findViewById(R.id.ivPhoto);
         TextView tvAuthor = (TextView) convertView.findViewById(R.id.tvAuthor);
-        TextView tvLikes = (TextView) convertView.findViewById(R.id.tvLikes);
         ImageView ivProfilePic = (ImageView) convertView.findViewById(R.id.ivProfilePic);
+
+        TextView tvCaption = (TextView) convertView.findViewById(R.id.tvCaption);
+        TextView tvLikes = (TextView) convertView.findViewById(R.id.tvLikes);
+
+
+        // Chat Icon
+        //ImageView ivChatIcon = (ImageView) convertView.findViewById(R.id.ivChatIcon);
         TextView tvCommentsCount = (TextView) convertView.findViewById(R.id.tvCommentsCount);
+
         // Insert the model data into each of the view items
         if (photo.caption == null) {
             tvCaption.setVisibility(View.INVISIBLE);
@@ -58,13 +65,16 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
             tvCaption.setText(photo.caption);
         }
 
-        if (photo.commentsCount == 0) {
+        /*if (photo.commentsCount == 0) {
             tvCommentsCount.setVisibility(View.INVISIBLE);
         } else {
-            tvCommentsCount.setText("view all " + photo.commentsCount + " comments");
-        }
+            //tvCommentsCount.setText("view all " + photo.commentsCount + " comments");
+            tvCommentsCount.setText(photo.commentsCount);
+
+        }*/
         tvAuthor.setText(photo.username);
         tvLikes.setText(photo.likesCount + " likes");
+        tvCommentsCount.setText(photo.commentsCount + " comments");
         // Clear the image view
         //ivPhoto.setImageResource(0);
         // Insert the image using picasso
