@@ -55,7 +55,9 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
         // Clear the image view
         //ivPhoto.setImageResource(0);
         // Insert the image using picasso
-        Picasso.with(getContext()).load(photo.imageUrl).into(ivPhoto);
+        Picasso.with(getContext())
+                .load(photo.imageUrl)
+                .into(ivPhoto);
 
         //Profile pic
         Transformation transformation = new RoundedTransformationBuilder()
